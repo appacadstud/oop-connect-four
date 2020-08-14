@@ -1,6 +1,7 @@
 
 
 import Game from './game.js';
+import Column from './column.js';
 
   const player1 = document.getElementById("player-1-name");
   const player2 = document.getElementById("player-2-name");
@@ -10,6 +11,7 @@ import Game from './game.js';
   const clickTargets = document.getElementById("click-targets");
 
   let game = undefined;
+  console.log(game)
 
   const updateUI = function(currentPlayer) {
     if(game !== undefined) {
@@ -53,8 +55,12 @@ window.addEventListener("DOMContentLoaded", event => {
   });
 
   clickTargets.addEventListener("click", event => {
-
-    game.playInColumn();
+    let id = Number.parseInt(event.target.id[event.target.id.length -1]);
+    console.log(id);
+    game.playInColumn(id);
     updateUI(game.currentPlayer);
   });
+
+  
 });
+
