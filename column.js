@@ -9,10 +9,10 @@ export default class Column {
 
     add(currentPlayer) {
 
-        for (let i = 5; i >= 0; i--) {
+        for (let rowIndex = 5; rowIndex >= 0; rowIndex--) {
 
-            if (this.array[i] === "") {
-              this.array[i] = currentPlayer;
+            if (this.array[rowIndex] === "") {
+              this.array[rowIndex] = currentPlayer;
               break;
 
             }

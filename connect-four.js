@@ -83,12 +83,13 @@ window.addEventListener("DOMContentLoaded", event => {
     game = new Game(player1.value, player2.value, 1);
     player1.value = "";
     player2.value = "";
-    console.log(game);
+    //console.log(game);
     newButton.disabled = true;
     updateUI(1);
   });
 
   clickTargets.addEventListener("click", event => {
+
     let id = Number.parseInt(event.target.id[event.target.id.length -1]);
     // console.log(id);
     game.playInColumn(id);

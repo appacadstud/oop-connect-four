@@ -1,5 +1,6 @@
 
 import Column from './column.js';
+import ColumnWinInspector from './column-win-inspector.js';
 
 export default class Game {
 
@@ -20,7 +21,14 @@ export default class Game {
           return `${this.player1} ties with ${this.player2}`;
         }
 
-        return `Player 1: ${this.player1} vs. Player 2: ${this.player2}`;
+        if(this.winningNumber === 1) {
+          return `Player 1: ${this.player1} wins!`;
+
+        } else if(this.winningNumber === 2) {
+          return `Player 2: ${this.player2} wins!`;
+        }
+
+        return `Player 1: ${this.player1} vs. Player 2: ${this.player2}`;        
     };
 
     playInColumn(columnIndex) {
@@ -36,6 +44,7 @@ export default class Game {
       }
 
       this.checkForTie();
+      this.checkForColumnWin();
     };
 
     checkForTie() {
@@ -44,16 +53,17 @@ export default class Game {
 
       for (let i = 0; i <= 6; i++) {
         let column = this.columns[i];
-        console.log(column);
+        //console.log(column);
         if (column.isFull()) {
           sum += 1;
-          console.log(sum);
+          //console.log(sum);
         }
       }
 
       if (sum === 7) {
         this.winnerNumber = 3;
       }
+
     }
 
     getTokenAt(rowIndex, columnIndex) {
@@ -64,7 +74,34 @@ export default class Game {
 
     isColumnFull(columnIndex) {
 
+      if(this.winningNumber === 1 || this.winnerNumber === 2) {
+        return true;
+      } 
       return this.columns[columnIndex].isFull();
+
+    };
+
+    checkForColumnWin() {
+
+      if(this.winnerNumber !== 0) {
+
+        return; 
+      }
+        
+      for(let columnIndex = 0; columnIndex < 6; columnIndex++) {
+
+        let column = this.columns[columnIndex];
+        let winInspector = new ColumnWinInspector(column);
+        let winningPlayer = winInspector.inspect();
+    
+        if(winningPlayer === 1) {
+          this.winningNumber = 1;
+        } else if(winningPlayer === 2) {
+          this.winningNumber = 2;
+        }
+        console.log(this.winnerNumber)
+      }
+
 
     };
 
