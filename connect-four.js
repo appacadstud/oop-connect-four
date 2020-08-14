@@ -26,6 +26,28 @@ import Column from './column.js';
       clickTargets.classList.add("red");
       clickTargets.classList.remove("black");
     };
+
+    for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {
+      for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
+        let square = document.getElementById(`square-${rowIndex}-${columnIndex}`);
+        square.innerHTML = "";
+
+        if (game.getTokenAt(rowIndex, columnIndex) === 1) {
+
+          let tokenBlack = document.createElement("div");
+          tokenBlack.classList.add("token");
+          tokenBlack.classList.add("black");
+          square.appendChild(tokenBlack);
+
+        } else if (game.getTokenAt(rowIndex, columnIndex) === 2) {
+
+          let tokenRed = document.createElement("div");
+          tokenRed.classList.add("token");
+          tokenRed.classList.add("red");
+          square.appendChild(tokenRed);
+        };
+      };
+    };
   };
 
 window.addEventListener("DOMContentLoaded", event => {
@@ -61,6 +83,5 @@ window.addEventListener("DOMContentLoaded", event => {
     updateUI(game.currentPlayer);
   });
 
-  
-});
 
+});

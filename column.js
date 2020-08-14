@@ -1,6 +1,6 @@
 
 export default class Column {
-    
+
     constructor() {
     this.array = ["", "", "", "", "", ""]
     }
@@ -9,23 +9,19 @@ export default class Column {
 
         for (let i = 5; i >= 0; i--) {
 
-            if (array[i] === "") {
-              array[i]  = currentPlayer;
+            if (this.array[i] === "") {
+              this.array[i] = currentPlayer;
               break
-    
+
             }
           }
          }
 
-         getToken(rowIndex) {
+         getTokenAt(rowIndex) {
 
             return this.array[rowIndex];
-    
+
         }
 
 
     }
-
-    
-
-
