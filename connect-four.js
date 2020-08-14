@@ -1,20 +1,19 @@
 
-
 import Game from './game.js';
 import Column from './column.js';
 
   const player1 = document.getElementById("player-1-name");
   const player2 = document.getElementById("player-2-name");
   const boardHolder = document.getElementById("board-holder");
-  const gameName = document.getElementById("game-name")
+  const gameName = document.getElementById("game-name");
   const newButton = document.getElementById("new-game");
   const clickTargets = document.getElementById("click-targets");
 
   let game = undefined;
-  console.log(game)
+  //console.log(game);
 
   const updateUI = function(currentPlayer) {
-    if(game !== undefined) {
+    if (game !== undefined) {
       boardHolder.classList.remove("is-invisible");
       gameName.innerHTML = game.getName();
     }
@@ -29,6 +28,7 @@ import Column from './column.js';
 
     for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {
       for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
+
         let square = document.getElementById(`square-${rowIndex}-${columnIndex}`);
         square.innerHTML = "";
 
@@ -45,8 +45,8 @@ import Column from './column.js';
           tokenRed.classList.add("token");
           tokenRed.classList.add("red");
           square.appendChild(tokenRed);
-        };
-      };
+        }
+      }
     };
 
     for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
@@ -56,11 +56,9 @@ import Column from './column.js';
       if (game.isColumnFull(columnIndex)) {
         column.classList.add("full");
       } else {
-        column.classList.remove("full")
+        column.classList.remove("full");
       }
-
     }
-
   };
 
 window.addEventListener("DOMContentLoaded", event => {
@@ -69,14 +67,14 @@ window.addEventListener("DOMContentLoaded", event => {
 
     if (player1.value !== "" && player2.value !== "") {
       newButton.disabled = false;
-    };
+    }
   });
 
   player2.addEventListener("keyup", event => {
 
     if (player1.value !== "" && player2.value !== "") {
       newButton.disabled = false;
-    };
+    }
   });
 
   newButton.addEventListener("click", event => {
@@ -95,6 +93,5 @@ window.addEventListener("DOMContentLoaded", event => {
     game.playInColumn(id);
     updateUI(game.currentPlayer);
   });
-
 
 });

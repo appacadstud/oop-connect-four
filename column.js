@@ -2,8 +2,10 @@
 export default class Column {
 
     constructor() {
-    this.array = ["", "", "", "", "", ""]
-    }
+
+    this.array = ["", "", "", "", "", ""];
+
+    };
 
     add(currentPlayer) {
 
@@ -11,22 +13,22 @@ export default class Column {
 
             if (this.array[i] === "") {
               this.array[i] = currentPlayer;
-              break
+              break;
 
             }
-            }
-         }
-
-         getTokenAt(rowIndex) {
-
-            return this.array[rowIndex];
-
         }
+    };
 
-        isFull() {
+    getTokenAt(rowIndex) {
 
-            return this.array[0] !== ""
-
-        }
+        return this.array[rowIndex];
 
     }
+
+    isFull() {
+
+        return this.array[0] !== "";
+
+    };
+
+};

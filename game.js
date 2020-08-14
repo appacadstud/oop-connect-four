@@ -1,7 +1,8 @@
 
-import Column from './column.js'
+import Column from './column.js';
 
 export default class Game {
+
     constructor(player1, player2, currentPlayer) {
 
         this.player1 = player1;
@@ -9,7 +10,8 @@ export default class Game {
         this.currentPlayer = currentPlayer;
         this.columns = [new Column(), new Column(), new Column(),  new Column(),
           new Column(), new Column(),  new Column(),];
-    }
+
+    };
 
     getName() {
 
@@ -26,18 +28,20 @@ export default class Game {
       } else {
         this.currentPlayer = 1;
         //console.log(this.currentPlayer);
-      };
+      }
+      
     };
 
     getTokenAt(rowIndex, columnIndex) {
 
       return this.columns[columnIndex].getTokenAt(rowIndex);
       
-    }
+    };
 
     isColumnFull(columnIndex) {
 
       return this.columns[columnIndex].isFull();
 
-  }
+    };
+
 };
