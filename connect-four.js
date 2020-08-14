@@ -48,6 +48,19 @@ import Column from './column.js';
         };
       };
     };
+
+    for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
+
+      let column = document.getElementById(`column-${columnIndex}`);
+
+      if (game.isColumnFull(columnIndex)) {
+        column.classList.add("full");
+      } else {
+        column.classList.remove("full")
+      }
+
+    }
+
   };
 
 window.addEventListener("DOMContentLoaded", event => {

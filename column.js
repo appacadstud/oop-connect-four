@@ -14,7 +14,7 @@ export default class Column {
               break
 
             }
-          }
+            }
          }
 
          getTokenAt(rowIndex) {
@@ -23,5 +23,10 @@ export default class Column {
 
         }
 
+        isFull() {
+
+            return this.array[0] !== ""
+
+        }
 
     }
