@@ -28,7 +28,7 @@ export default class Game {
           return `Player 2: ${this.player2} wins!`;
         }
 
-        return `Player 1: ${this.player1} vs. Player 2: ${this.player2}`;        
+        return `Player 1: ${this.player1} vs. Player 2: ${this.player2}`;
     };
 
     playInColumn(columnIndex) {
@@ -76,7 +76,7 @@ export default class Game {
 
       if(this.winningNumber === 1 || this.winnerNumber === 2) {
         return true;
-      } 
+      }
       return this.columns[columnIndex].isFull();
 
     };
@@ -85,21 +85,22 @@ export default class Game {
 
       if(this.winnerNumber !== 0) {
 
-        return; 
+        return;
       }
-        
+
       for(let columnIndex = 0; columnIndex < 6; columnIndex++) {
 
         let column = this.columns[columnIndex];
         let winInspector = new ColumnWinInspector(column);
         let winningPlayer = winInspector.inspect();
-    
+
         if(winningPlayer === 1) {
           this.winningNumber = 1;
         } else if(winningPlayer === 2) {
           this.winningNumber = 2;
         }
-        console.log(this.winnerNumber)
+        break; // <------ need this to break out of loop once you find a winner
+        // console.log(this.winnerNumber)
       }
 
 
