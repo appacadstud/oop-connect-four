@@ -1,5 +1,6 @@
 let sum = 0
 let array = ["", "", "", "", "", "", ""]
+console.log(array);
 
 // function fillTracking () {
 
@@ -21,9 +22,9 @@ let array = ["", "", "", "", "", "", ""]
 function columnDrop(playerNum) {
 
        for (let i = array.length -1; i > 0; i -= array.length) {
-        
+
         let boardSpot = array[i];
-        
+
         if (boardSpot === "") {
              array.splice(0, boardSpot)
              array.unshift(playerNum)
@@ -33,12 +34,12 @@ function columnDrop(playerNum) {
             // array.splice(0, boardSpot)
             // array.push(playerNum)
             // array.unshift()
-         } 
+         }
 
       }
 
       return array
-    
+
     }
 
     console.log(columnDrop(1))
@@ -48,7 +49,7 @@ function columnDrop(playerNum) {
     // function columnTop(playerNum) {
     //     let sum = 0
     //     for (let i = 0; i < array.length; i++) {
-         
+
     //      let boardSpot = array[i];
     //      let spliceSpot = array[i - 1]
     //      if (boardSpot !== "") {
@@ -65,19 +66,17 @@ function columnDrop(playerNum) {
     //         //  array.splice(0,boardSpot)
     //         //  array.shift()
     //         //  array.splice("", array.length)
-    //       } 
+    //       }
     //      // else if (boardSpot !== "") {
     //      //     array.unshift("")
     //      // }
- 
+
     //    }
- 
+
     //    return array
-     
+
     //  }
- 
+
     //  console.log(columnTop(1))
     //  console.log(columnTop(2))
     //  console.log(columnTop(1))
-
-
