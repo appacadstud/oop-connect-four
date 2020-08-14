@@ -10,10 +10,15 @@ export default class Game {
         this.currentPlayer = currentPlayer;
         this.columns = [new Column(), new Column(), new Column(),  new Column(),
           new Column(), new Column(),  new Column(),];
+        this.winnerNumber = 0;
 
     };
 
     getName() {
+
+        if (this.winnerNumber === 3) {
+          return `${this.player1} ties with ${this.player2}`;
+        }
 
         return `Player 1: ${this.player1} vs. Player 2: ${this.player2}`;
     };
@@ -29,13 +34,32 @@ export default class Game {
         this.currentPlayer = 1;
         //console.log(this.currentPlayer);
       }
-      
+
+      this.checkForTie();
     };
+
+    checkForTie() {
+
+      let sum = 0;
+
+      for (let i = 0; i <= 6; i++) {
+        let column = this.columns[i];
+        console.log(column);
+        if (column.isFull()) {
+          sum += 1;
+          console.log(sum);
+        }
+      }
+
+      if (sum === 7) {
+        this.winnerNumber = 3;
+      }
+    }
 
     getTokenAt(rowIndex, columnIndex) {
 
       return this.columns[columnIndex].getTokenAt(rowIndex);
-      
+
     };
 
     isColumnFull(columnIndex) {

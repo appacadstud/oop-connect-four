@@ -58,6 +58,7 @@ import Column from './column.js';
       } else {
         column.classList.remove("full");
       }
+
     }
   };
 
@@ -89,7 +90,7 @@ window.addEventListener("DOMContentLoaded", event => {
 
   clickTargets.addEventListener("click", event => {
     let id = Number.parseInt(event.target.id[event.target.id.length -1]);
-    console.log(id);
+    // console.log(id);
     game.playInColumn(id);
     updateUI(game.currentPlayer);
   });
