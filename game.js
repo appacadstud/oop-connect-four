@@ -1,6 +1,7 @@
 
 import Column from './column.js';
 import ColumnWinInspector from './column-win-inspector.js';
+import RowWinInspector from './row-win-inspector.js';
 
 export default class Game {
 
@@ -45,6 +46,7 @@ export default class Game {
 
       this.checkForTie();
       this.checkForColumnWin();
+      this.checkForRowWin();
     };
 
     checkForTie() {
@@ -88,22 +90,38 @@ export default class Game {
         return;
       }
 
-      for(let columnIndex = 0; columnIndex < 6; columnIndex++) {
+      for(let columnIndex = 0; columnIndex < 7; columnIndex++) {
 
         let column = this.columns[columnIndex];
         let winInspector = new ColumnWinInspector(column);
-        let winningPlayer = winInspector.inspect();
+        let winningNumber = winInspector.inspect();
+        console.log(winningNumber);
 
-        if(winningPlayer === 1) {
-          this.winningNumber = 1;
-        } else if(winningPlayer === 2) {
-          this.winningNumber = 2;
+        if(winningNumber === 1 || winningNumber === 2) {
+          this.winningNumber = winningNumber;
+          break; // <------ need this to break out of loop once you find a winner
         }
-        break; // <------ need this to break out of loop once you find a winner
-        // console.log(this.winnerNumber)
+      }
+    }
+
+    checkForRowWin() {
+
+      if(this.winnerNumber !== 0) {
+
+        return;
       }
 
+      for(let columnIndex = 0; columnIndex < 4; columnIndex++) {
 
+        let columns = this.columns.slice(columnIndex, columnIndex + 4);
+        let winInspector = new RowWinInspector(columns);
+        let winningNumber = winInspector.inspect();
+        console.log(winningNumber);
+
+        if(winningNumber === 1 || winningNumber === 2) {
+          this.winningNumber = winningNumber;
+          // break; // <------ need this to break out of loop once you find a winner
+        }
+      }
     };
-
 };
